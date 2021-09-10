@@ -37,6 +37,8 @@ public class Window extends JFrame
 	JButton btnShowKunde;
 	JTextArea taKundenAnzeige;
 	
+	JButton btnCsvExport;
+	
 	
 	public Window ()
 	{
@@ -68,6 +70,8 @@ public class Window extends JFrame
 		btnShowKunde = new JButton("Kunde anzeigen");
 		taKundenAnzeige = new JTextArea();
 		
+		btnCsvExport = new JButton("CSV");
+		
 		// 3. Formularelemente dem Window hinzufuegen
 		add(lblAnrede);
 		add(lblVorname);
@@ -89,6 +93,8 @@ public class Window extends JFrame
 		add(btnShowKunde);
 		add(taKundenAnzeige);
 		
+		add(btnCsvExport);
+		
 		// 4. Elemente positionieren und Groesse bestimmen
 		lblAnrede.setBounds(20, 20, 110, 25);
 		lblVorname.setBounds(20, 55, 110, 25);
@@ -106,14 +112,17 @@ public class Window extends JFrame
 		tfOrt.setBounds(200, 160, 110, 25);
 		tfTelefon.setBounds(130, 195, 110, 25);
 		cbxNeukunde.setBounds(130, 230, 110, 25);
-		btnSpeichern.setBounds(130, 265, 110, 25);
+		btnSpeichern.setBounds(20, 265, 110, 25);
 		
-		btnShowKunde.setBounds(250, 265, 140, 25);
+		btnShowKunde.setBounds(140, 265, 180, 25);
 		taKundenAnzeige.setBounds(20, 300, 420, 350);
+		
+		btnCsvExport.setBounds(330, 265, 110, 25);
 		
 		Click click = new Click(this);
 		btnSpeichern.addActionListener( click );
 		btnShowKunde.addActionListener( click );
+		btnCsvExport.addActionListener( click );
 		
 		// JComboBox fuellen
 		

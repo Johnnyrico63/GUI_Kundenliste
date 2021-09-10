@@ -3,10 +3,11 @@ package comcave;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.io.*;
 
 import javax.accessibility.AccessibleContext;
 
-public class Costumer
+public class Costumer implements Serializable
 {
 	Object anrede;
 	String vorname, nachname, anschrift, plz, ort, telefon;

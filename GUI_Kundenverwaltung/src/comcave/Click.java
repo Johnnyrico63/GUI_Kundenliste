@@ -1,7 +1,9 @@
 package comcave;
 
 import java.awt.event.*;
-import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
+import javax.swing.*;
 
 public class Click implements ActionListener
 {
@@ -27,6 +29,14 @@ public class Click implements ActionListener
 									w.tfTelefon.getText(),
 									w.cbxNeukunde.getAccessibleContext()
 								));
+			if(DateiManager.kundenSpeichern())
+			{
+				clearForm();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(w, "Kunde nicht gespeichert");
+			}
 		}
 		else if (e.getSource().equals(w.btnShowKunde))
 		{
@@ -37,8 +47,26 @@ public class Click implements ActionListener
 				text += costumer.getAnrede() + "\t" + costumer.getVorname() + "\t" + costumer.getNachname() + "\n";
 			}
 			w.taKundenAnzeige.setText(text);
+		}
+		else if (e.getSource().equals(w.btnCsvExport)) 
+		{
+			File file = new File(new File("export.csv").getAbsolutePath());
 			
+			JFileChooser exportDialog = new JFileChooser();
+			exportDialog.setSelectedFile(file);
+			int result = exportDialog.showSaveDialog(w);
+			if (result == JFileChooser.APPROVE_OPTION)
+			{
+				file = exportDialog.getSelectedFile();
+				DateiManager.csvSpeichern(file);
+			}
 		}
 	}
 
+	private void clearForm()
+	{
+		w.tfVorname.setText("");
+		w.cbAnrede.setSelectedIndex(0);
+		w.cbxNeukunde.setSelected(false);
+	}
 }
